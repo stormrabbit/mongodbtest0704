@@ -16,4 +16,4 @@ var PlayerSchema = new Schema({
   versionKey: false
 });
 
-module.exports = mongoose.Model('Player', PlayerSchema);
+module.exports = mongoose.model('Player', PlayerSchema);

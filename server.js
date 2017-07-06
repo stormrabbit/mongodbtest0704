@@ -3,7 +3,7 @@ var express = require('express');
 var app = express();
 // 设置端口
 var port = (process.env.PORT || 4000);
-var playerDAO = require('./playerDAO');
+
 
 // POST
 var bodyParser = require('body-parser');
@@ -22,8 +22,60 @@ app.get('/', function(req, res){
 app.post('/add', upload.array(), function(req, res) {
   var name = req.body.name;
   var team = req.body.team;
-  playerDAO.insert(name, team);
+  // var playerDAO = require('./playerDAO');
+  // playerDAO.insert(name, team);
+  var playerDAO = require('./playerDAO');
+  playerDAO.insertPlayer(name, team);
   res.send('ok');
+})
+
+app.get('/delete', function(req, res) {
+  var _id = req.query.id;
+  // var playerDAO = require('./playerDAO');
+  // playerDAO.insert(name, team);
+  var playerDAO = require('./playerDAO');
+  playerDAO.deletePlayer(_id);
+  res.send('ok');
+})
+
+app.put('/update/:id', function(req, res) {
+  // var playerDAO = require('./playerDAO');
+  // playerDAO.insert(name, team);
+  var id = req.params.id;
+  var team = req.query.team;
+  var playerDAO = require('./playerDAO');
+  playerDAO.updatePlayer(id, team);
+  res.send('ok');
+})
+
+
+app.get('/findAll', function(req, res) {
+  var playerDAO = require('./playerDAO');
+  var getInfoBack = function(info) {
+    res.send(info);
+  }
+  playerDAO.findAllPlayers(getInfoBack);
+
+})
+
+app.get('/find', function(req, res) {
+  var id = req.query.id;
+  var playerDAO = require('./playerDAO');
+  var getInfoBack = function(info) {
+    res.send(info);
+  }
+  playerDAO.findPlayerById(id, getInfoBack);
+
+})
+
+app.get('/findByTeam', function(req, res) {
+  var team = req.query.team;
+  var playerDAO = require('./playerDAO');
+  var getInfoBack = function(info) {
+    res.send(info);
+  }
+  playerDAO.findPlayerByTeam(team, getInfoBack);
+
 })
 // // 随便写了一个详情页
 // app.get('/about/*', function(req, res){
