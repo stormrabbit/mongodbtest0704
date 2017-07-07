@@ -3,7 +3,9 @@ import {
 } from '@angular/core';
 import { RouterModule, Route }   from '@angular/router';
 import { GundamDetailComponent } from './component/detail/gundam-detail.component';
-import { DemoComponent } from './component/demo/demo';
+import { PlayerDemoComponent } from './component/demo/demo';
+import { PlayerSelectedComponent } from './component/demo/demo-select.component';
+
 import { PlayerHostComponent } from './component/host/player-host-component';
 
 const routes: Route[] = [
@@ -17,7 +19,11 @@ const routes: Route[] = [
     },
     {
       path: 'demo',
-      component: DemoComponent
+      component: PlayerDemoComponent
+    },
+    {
+      path: 'selected/:id',
+      component: PlayerSelectedComponent
     }
 ];
 

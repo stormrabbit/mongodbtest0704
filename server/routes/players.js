@@ -36,8 +36,8 @@ router.get('/delete', function(req, res) {
   playerService.deletePlayer(_id, getInfoBack);
 })
 
-router.put('/update/:id', function(req, res) {
-  var id = req.params.id;
+router.get('/update', function(req, res) {
+  var id = req.query.id;
   var team = req.query.team;
   var getInfoBack = function(info) {
     res.send(info);
@@ -62,6 +62,14 @@ router.get('/findByTeam', function(req, res) {
     res.send(info);
   }
   playerService.findPlayerByTeam(team, getInfoBack);
+
+})
+
+router.get('/findTeam', function(req, res) {
+  var getInfoBack = function(info) {
+    res.send(info);
+  }
+  playerService.findTeams(getInfoBack);
 
 })
 

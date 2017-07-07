@@ -90,4 +90,15 @@ playerService.findPlayerByTeam = function(team, getInfoBack) {
   });
 }
 
+playerService.findTeams = function(getInfoBack) {
+  Player.distinct('team', function(err, docs) {
+    if (err) {
+      getInfoBack(err);
+    } else {
+      console.log(docs.length);
+      getInfoBack(docs.sort());
+    }
+  })
+}
+
 module.exports = playerService;

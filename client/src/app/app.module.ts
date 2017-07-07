@@ -14,9 +14,9 @@ import { GundamDetailComponent } from './component/detail/gundam-detail.componen
 import { PlayerHostComponent } from './component/host/player-host-component';
 import { GundamHostComponent } from './component/host/gundam-host.component';
 import { GundamHostItemComponent } from './component/host-item/gundam-host-item.component';
-import { DemoComponent } from './component/demo/demo';
+import { PlayerDemoComponent } from './component/demo/demo';
 import { AppRoutingModule } from './app-routing.module';
-
+import { PlayerSelectedComponent } from './component/demo/demo-select.component';
 import { HttpModule } from '@angular/http';
 import { PlayerService } from './service/player.service';
 
@@ -32,8 +32,9 @@ import { PlayerService } from './service/player.service';
     GundamDetailComponent,
     GundamHostComponent,
     GundamHostItemComponent,
-    DemoComponent,
-    PlayerHostComponent
+    PlayerDemoComponent,
+    PlayerHostComponent,
+    PlayerSelectedComponent
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent],

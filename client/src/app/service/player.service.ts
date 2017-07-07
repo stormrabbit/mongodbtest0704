@@ -7,8 +7,11 @@ import 'rxjs/add/operator/toPromise';
 export class PlayerService {
   private api = 'http://localhost:4000'; // 服务器地址
   private getALLPlayers = '/players'; // 获取全部
-  /*
+  private getALLTeams = '/players/findTeam'; // 获取队伍
   private getPlayersByTeam = '/players/findByTeam';
+  private updatePlayerByTeam = '/players/update';
+  /*
+
   private getPlayerById = '/players/find';
   private addPlayer = '/players/add';
   private removePlayer = '/players/delete';
@@ -21,6 +24,26 @@ export class PlayerService {
             .toPromise()
             .then(response => response.json() as Player[])
             .catch(this.handleError);
+   }
+
+   getAllTeams(): Promise<number []> {
+     return this.http.get(this.api + this.getALLTeams)
+            .toPromise().then( resp => resp.json() as number[])
+            .catch(this.handleError);
+   }
+
+   getPlayerByTeams(id: number): Promise<Player []> {
+     console.log(id);
+     return this.http.get(this.api + this.getPlayersByTeam + '?team=' + id)
+            .toPromise().then (resp => resp.json() as Player[])
+            .catch(this.handleError);
+   }
+
+   pickPlayerByTeam(id: string, team: number): Promise<any> {
+     console.log(id);
+     console.log(team);
+     return this.http.get(this.api + this.updatePlayerByTeam + '?team=' + team + '&id=' + id)
+           .toPromise().then( resp => resp);
    }
    // 获得全部数据
    /*
