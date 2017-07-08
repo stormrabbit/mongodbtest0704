@@ -28,6 +28,10 @@ app.all('*', function(req, res, next) {
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
     res.header("X-Powered-By",' 3.2.1')
     res.header("Content-Type", "application/json;charset=utf-8");
+    // 防止304
+    res.header("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+    res.header("Pragma", "no-cache"); // HTTP 1.0.
+    res.header("Expires", "0"); // Proxies.
     next();
 });
 

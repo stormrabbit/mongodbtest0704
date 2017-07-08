@@ -49,6 +49,4 @@ export class PlayerSelectedComponent implements OnInit {
        this.getNetData();
        });
   }
-
-
 }
